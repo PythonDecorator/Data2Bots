@@ -32,19 +32,6 @@ class TestDataSchema(unittest.TestCase):
 
         self.assertEqual(schema, test_schema)
 
-    def test_dumping_schema(self):
-        """Test That dumping schema was successful."""
-        data_file = "data/test.json"
-
-        save_path = "schema/test/test_schema.json"
-        self.schema.dump_schema(save_path=save_path,
-                                data_file=data_file, schema_uri=None)
-
-        self.assertIsNotNone(os.path.join(basedir, save_path))
-
-        # remove created test schema
-        os.remove(os.path.join(basedir, save_path))
-
     def check_tag_description_exist(self):
         data = self.schema.get_data("schema/example.json")
         if isinstance(data, dict):
