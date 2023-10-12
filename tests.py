@@ -5,6 +5,8 @@ import os
 import unittest
 from schema_manager import SchemaManager
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 class TestDataSchema(unittest.TestCase):
     """Tests for Data and Schema."""
@@ -21,8 +23,8 @@ class TestDataSchema(unittest.TestCase):
     def test_building_schema(self):
         """Test That creating schema was successful."""
         test_schema = {'type': 'object', 'properties':
-            {'name': {'type': 'string'},
-             'price': {'type': 'string'}},
+                       {'name': {'type': 'string'},
+                        'price': {'type': 'string'}},
                        'required': ['name', 'price']}
         data_file = "data/test.json"
         schema = self.schema.schema_builder(data_file, schema_uri=None)
@@ -31,7 +33,7 @@ class TestDataSchema(unittest.TestCase):
 
     def test_dumping_schema(self):
         """Test That dumping schema was successful."""
-        dir_ = "schema/test"
+        dir_ = os.path.join(basedir, "schema/test")
         initial_num_items = len([name for name in os.listdir(dir_)
                                  if os.path.isfile(os.path.join(dir_, name))])
 

@@ -1,0 +1,253 @@
+{
+  "type": "object",
+  "properties": {
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "appName": {
+          "type": "string"
+        },
+        "eventType": {
+          "type": "string"
+        },
+        "subEventType": {
+          "type": "string"
+        },
+        "sensitive": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "appName",
+        "eventType",
+        "sensitive",
+        "subEventType"
+      ]
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "battle": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "orientation": {
+              "type": "string"
+            },
+            "settings": {
+              "type": "object",
+              "properties": {
+                "minParticipants": {
+                  "type": "integer"
+                },
+                "maxParticipants": {
+                  "type": "integer"
+                },
+                "battleType": {
+                  "type": "string"
+                },
+                "wagerType": {
+                  "type": "string"
+                },
+                "countdown": {
+                  "type": "integer"
+                },
+                "duration": {
+                  "type": "integer"
+                },
+                "archetype": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "iconId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "iconId",
+                    "name"
+                  ]
+                }
+              },
+              "required": [
+                "archetype",
+                "battleType",
+                "countdown",
+                "duration",
+                "maxParticipants",
+                "minParticipants",
+                "wagerType"
+              ]
+            },
+            "status": {
+              "type": "string"
+            },
+            "creationTime": {
+              "type": "integer"
+            },
+            "startTime": {
+              "type": "integer"
+            },
+            "endTime": {
+              "type": "integer"
+            },
+            "creator": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "nickname": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "accountType": {
+                  "type": "string"
+                },
+                "countryCode": {
+                  "type": "string"
+                },
+                "orientation": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "accountType",
+                "countryCode",
+                "id",
+                "nickname",
+                "orientation",
+                "title"
+              ]
+            },
+            "participants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "nickname": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "accountType": {
+                        "type": "string"
+                      },
+                      "countryCode": {
+                        "type": "string"
+                      },
+                      "orientation": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "accountType",
+                      "countryCode",
+                      "id",
+                      "nickname",
+                      "orientation",
+                      "title"
+                    ]
+                  },
+                  "creator": {
+                    "type": "boolean"
+                  },
+                  "ranking": {
+                    "type": "integer"
+                  },
+                  "numberOfTrades": {
+                    "type": "integer"
+                  },
+                  "performance": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "creator",
+                  "numberOfTrades",
+                  "performance",
+                  "ranking",
+                  "user"
+                ]
+              }
+            }
+          },
+          "required": [
+            "creationTime",
+            "creator",
+            "endTime",
+            "id",
+            "name",
+            "orientation",
+            "participants",
+            "settings",
+            "startTime",
+            "status"
+          ]
+        },
+        "joiner": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "nickname": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "accountType": {
+              "type": "string"
+            },
+            "countryCode": {
+              "type": "string"
+            },
+            "orientation": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "accountType",
+            "countryCode",
+            "id",
+            "nickname",
+            "orientation",
+            "title"
+          ]
+        },
+        "participantIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "battle",
+        "joiner",
+        "participantIds"
+      ]
+    }
+  },
+  "required": [
+    "attributes",
+    "message"
+  ]
+}
