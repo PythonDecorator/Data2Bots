@@ -22,10 +22,11 @@ class TestDataSchema(unittest.TestCase):
 
     def test_building_schema(self):
         """Test That creating schema was successful."""
-        test_schema = {'type': 'object', 'properties':
-                       {'name': {'type': 'string'},
-                        'price': {'type': 'string'}},
-                       'required': ['name', 'price']}
+        test_schema = {
+            'type': 'object', 'properties':
+                {'name': {'type': 'string'},
+                 'price': {'type': 'string'}},
+            'required': ['name', 'price']}
         data_file = "data/test.json"
         schema = self.schema.schema_builder(data_file, schema_uri=None)
 
@@ -34,12 +35,14 @@ class TestDataSchema(unittest.TestCase):
     # def test_dumping_schema(self):
     #     """Test That dumping schema was successful."""
     #     dir_ = os.path.join(basedir, "schema/test")
-    #     initial_num_items = len([name for name in os.listdir(dir_)
-    #                              if os.path.isfile(os.path.join(dir_, name))])
+    #     initial_num_items = len(
+    #         [name for name in os.listdir(dir_)
+    #          if os.path.isfile(os.path.join(dir_, name))])
     #     data_file = "data/test.json"
     #
     #     save_path = "schema/test/test_schema.json"
-    #     self.schema.dump_schema(save_path=save_path, data_file=data_file, schema_uri=None)
+    #     self.schema.dump_schema(save_path=save_path,
+    #                             data_file=data_file, schema_uri=None)
     #
     #     final_num_items = len([name for name in os.listdir(dir_)
     #                            if os.path.isfile(os.path.join(dir_, name))])
@@ -52,8 +55,8 @@ class TestDataSchema(unittest.TestCase):
         data = self.schema.get_data("schema/example.json")
         if isinstance(data, dict):
             for key, value in data.items():
-                res1 = value["tag"]
-                res1 = value["description"]
+                value["tag"] = value["description"]
+
         return self.check_tag_description_exist
 
     def test_padding_with_tags_and_description(self):
@@ -70,7 +73,7 @@ class TestDataSchema(unittest.TestCase):
 
     def to_get_attributes_from_schema(self):
         data = self.schema.get_data("data/data_1.json")["message"]
-        res = data["attributes"]
+        data["attributes"] = data["attributes"]
         return self.to_get_attributes_from_schema
 
     def test_capturing_only_message_attrs(self):

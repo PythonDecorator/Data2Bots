@@ -33,4 +33,5 @@ class SchemaManager:
     def dump_schema(self, save_path, data_file, schema_uri):
         """Dump data to a path or folder."""
         with open(os.path.join(basedir, save_path), "w") as json_file:
-            json.dump(self.schema_builder(data_file, schema_uri), json_file, indent=2)
+            json.dump(self.schema_builder(data_file, schema_uri),
+                      json_file, indent=2)
