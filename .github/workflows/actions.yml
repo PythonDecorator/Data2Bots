@@ -1,4 +1,7 @@
 ---
+name: Run Tests.py and main.py
+
+on: [push]
 
 jobs:
   build:
