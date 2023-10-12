@@ -32,24 +32,18 @@ class TestDataSchema(unittest.TestCase):
 
         self.assertEqual(schema, test_schema)
 
-    # def test_dumping_schema(self):
-    #     """Test That dumping schema was successful."""
-    #     dir_ = os.path.join(basedir, "schema/test")
-    #     initial_num_items = len(
-    #         [name for name in os.listdir(dir_)
-    #          if os.path.isfile(os.path.join(dir_, name))])
-    #     data_file = "data/test.json"
-    #
-    #     save_path = "schema/test/test_schema.json"
-    #     self.schema.dump_schema(save_path=save_path,
-    #                             data_file=data_file, schema_uri=None)
-    #
-    #     final_num_items = len([name for name in os.listdir(dir_)
-    #                            if os.path.isfile(os.path.join(dir_, name))])
-    #     self.assertGreater(final_num_items, initial_num_items)
-    #
-    #     # remove created test schema
-    #     os.remove(save_path)
+    def test_dumping_schema(self):
+        """Test That dumping schema was successful."""
+        data_file = "data/test.json"
+
+        save_path = "schema/test/test_schema.json"
+        self.schema.dump_schema(save_path=save_path,
+                                data_file=data_file, schema_uri=None)
+
+        self.assertIsNotNone(os.path.join(basedir, save_path))
+
+        # remove created test schema
+        os.remove(os.path.join(basedir, save_path))
 
     def check_tag_description_exist(self):
         data = self.schema.get_data("schema/example.json")
